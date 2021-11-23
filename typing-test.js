@@ -62,7 +62,7 @@ function updateCharactersStatus() {
 }
 
 function updateAccuracy() {
-    accuracyText.innerHTML = Math.round(((typedCharacter - errors) / typedCharacter) * 100);
+    accuracyText.innerHTML = Math.round(((typedCharacter - errors)/typedCharacter)*100);
 }
 
 function updateErrors() {
