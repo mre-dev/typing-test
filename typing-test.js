@@ -44,16 +44,35 @@ function update() {
 }
 
 function updateCharactersStatus() {
+<<<<<<< HEAD
     let textLength = textArea.value.length-1;
+=======
+    let textLength = textArea.value.length - 1;
+    
+    if (typedCharacter !== 0 && textArea.value.length == 0) {
+      document.querySelectorAll('#type-text span')[0].classList.remove('incorrect-char');
+      document.querySelectorAll('#type-text span')[0].classList.remove('correct-char');
+      return;
+    }
+
+    if (textArea.value[textLength + 1] == undefined) {
+      document.querySelectorAll('#type-text span')[textLength + 1].classList.remove('incorrect-char');
+      document.querySelectorAll('#type-text span')[textLength + 1].classList.remove('correct-char');
+    }
+
+>>>>>>> master
     if (TEXT[textLength] === textArea.value[textLength]) {
         document.querySelectorAll('#type-text span')[textLength].classList.add('correct-char');
     } else if (TEXT[textLength] !== textArea.value[textLength]) {
         document.querySelectorAll('#type-text span')[textLength].classList.add('incorrect-char');
     }
+<<<<<<< HEAD
     if (textArea.value[textLength+1] == undefined) {
             document.querySelectorAll('#type-text span')[textLength + 1].classList.remove('incorrect-char');
         document.querySelectorAll('#type-text span')[textLength + 1].classList.remove('correct-char');
     }
+=======
+>>>>>>> master
 }
 
 function updateAccuracy() {
