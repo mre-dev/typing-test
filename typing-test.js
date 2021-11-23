@@ -1,6 +1,5 @@
 const TIME_LIMIT = 60;
-const TEXT =
-    "سعی نکنید همه چیز را بدانید. شما ممکن است خیلی چیزها را دیده و انجام داده باشید، اما لزوما به این معنی نیست که شما می دانید بهترین است. سعی نکنید به مردم بگویید که چگونه می توانند کارها را به شیوه ای بهتر انجام دهند یا اینکه بهتر می توانند کاری انجام دهند.";
+const TEXT = "سعی نکنید همه چیز را بدانید. شما ممکن است خیلی چیزها را دیده و انجام داده باشید، اما لزوما به این معنی نیست که شما می دانید بهترین است. سعی نکنید به مردم بگویید که چگونه می توانند کارها را به شیوه ای بهتر انجام دهند یا اینکه بهتر می توانند کاری انجام دهند.";
 
 let wpmText = document.getElementById("wpm");
 let errorText = document.getElementById("errors");
@@ -41,40 +40,29 @@ function update() {
     updateCharactersStatus();
     updateErrors();
     updateAccuracy();
-    errorText.innerText = errors;
 }
 
 function updateCharactersStatus() {
-  let textLength = textArea.value.length - 1;
-    
-  if (typedCharacter !== 0 && textArea.value.length == 0) {
-    document.querySelectorAll('#type-text span')[0].classList.remove('incorrect-char');
-    document.querySelectorAll('#type-text span')[0].classList.remove('correct-char');
+    let textAreaInputArray = textArea.value.split('');
     errors = 0;
+    SpanArray = typeText.querySelectorAll('span').forEach((Character, index) => {
+        if (textAreaInputArray[index] == null) {
+            Character.classList.remove('correct-char');
+            Character.classList.remove('incorrect-char');
+        } else if (textAreaInputArray[index] === Character.innerText) {
+            Character.classList.add('correct-char');
+            Character.classList.remove('incorrect-char');
+        } else {
+            Character.classList.add('incorrect-char');
+            Character.classList.remove('correct-char');
+            errors++;
+        }
+    });
     errorText.innerText = errors;
-    return;
-  }
-
-  if (textArea.value[textLength + 1] == undefined) {
-      if (document.querySelectorAll('#type-text span')[textLength + 1].classList.contains('incorrect-char')){
-          errors = errors -2;
-          errorText.innerText = errors;
-      }
-    document.querySelectorAll('#type-text span')[textLength + 1].classList.remove('incorrect-char');
-    document.querySelectorAll('#type-text span')[textLength + 1].classList.remove('correct-char');
-
-  }
-
-  if (TEXT[textLength] === textArea.value[textLength]) {
-      document.querySelectorAll('#type-text span')[textLength].classList.add('correct-char');
-  } else if (TEXT[textLength] !== textArea.value[textLength]) {
-      document.querySelectorAll('#type-text span')[textLength].classList.add('incorrect-char');
-      errors++ ;
-  }
 }
 
 function updateAccuracy() {
-    // TODO: Complete this function
+    accuracyText.innerHTML = Math.round(((typedCharacter - errors) / typedCharacter) * 100);
 }
 
 function updateErrors() {
