@@ -15,6 +15,7 @@ body {
   color: #000;
   text-align: center;
   direction: rtl;
+  overflow: hidden;
 }
 
 .container {
