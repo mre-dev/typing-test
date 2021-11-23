@@ -45,7 +45,7 @@ function update() {
 function updateCharactersStatus() {
     let textAreaInputArray = textArea.value.split('');
     errors = 0;
-    SpanArray = typeText.querySelectorAll('span').forEach((Character, index) => {
+    typeText.querySelectorAll('span').forEach((Character, index) => {
         if (textAreaInputArray[index] == null) {
             Character.classList.remove('correct-char');
             Character.classList.remove('incorrect-char');
