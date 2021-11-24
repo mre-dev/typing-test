@@ -58,7 +58,6 @@ function updateCharactersStatus() {
             errors++;
         }
     });
-    errorText.innerText = errors;
 }
 
 function updateAccuracy() {
@@ -66,7 +65,7 @@ function updateAccuracy() {
 }
 
 function updateErrors() {
-    // TODO: Complete this function
+    errorText.innerText = errors;
 }
 
 function updateWpm() {
