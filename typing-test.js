@@ -69,8 +69,7 @@ function updateErrors() {
 }
 
 function updateWpm() {
-    wpmText.innerText = Math.round((typedCharacter/timeElapsed)*60);
-    console.log(wpmText);
+    wpmText.innerText = Math.round(((characterTyped / 5) / timeElapsed)*60);
 }
 
 function updateTimer() {
