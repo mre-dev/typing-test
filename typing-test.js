@@ -74,9 +74,10 @@ function updateWpm() {
 }
 
 function updateTimer() {
-    // TODO: Complete this function
+    
 }
 
 function finishTest() {
-    // TODO: Complete this function
+    clearTimeout(timer);
+    textArea.disabled = true;
 }
