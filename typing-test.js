@@ -50,7 +50,7 @@ function updateCharactersStatus() {
         if (textAreaInputArray[index] == null) {
             Character.classList.remove('correct-char');
             Character.classList.remove('incorrect-char');
-        } else if (textAreaInputArray[index] === Character.innerText) {
+        } else if (textAreaInputArray[index] === Character.innerHTML) {
             Character.classList.add('correct-char');
             Character.classList.remove('incorrect-char');
         } else {
@@ -66,11 +66,11 @@ function updateAccuracy() {
 }
 
 function updateErrors() {
-    errorText.innerText = errors;
+    errorText.innerHTML = errors;
 }
 
 function updateWpm() {
-    wpmText.innerText = Math.round(((characterTyped / 5) / timeElapsed)*60);
+    wpmText.innerHTML = Math.round(((typedCharacter / 5) / timeElapsed)*60);
 }
 
 function updateTimer() {
@@ -78,9 +78,9 @@ function updateTimer() {
         timeLeft--;
         timeElapsed++;
         timerText.innerHTML = timeLeft + "s";
-    } else {
-        finishTest();
         updateWpm();
+    } else {
+        finishTest();        
     }
 }
 
