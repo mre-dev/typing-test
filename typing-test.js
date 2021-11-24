@@ -29,6 +29,7 @@ function initializeTest({timeLimit, text}) {
         typeText.appendChild(tempSpan);
     }
     timerText.innerHTML = timeLimit;
+    timeLeft = TIME_LIMIT;
 }
 
 function update() {
@@ -74,7 +75,14 @@ function updateWpm() {
 }
 
 function updateTimer() {
-    
+    if(timeLeft > 0){
+        timeLeft--;
+        timeElapsed++;
+        timerText.innerHTML = timeLeft + "s";
+    } else {
+        finishTest();
+        updateWpm();
+    }
 }
 
 function finishTest() {
